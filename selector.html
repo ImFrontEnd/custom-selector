@@ -1,0 +1,19 @@
+<div class="select input-group {{selector.nclass}}" data-disabled="{{selector.disabled}}" data-parent="{{selector.parent}}" id ="{{selector.uid}}">
+  <div class="input form-control text-left">{{selector.model.name}}</div>
+  <a class="input-group-addon" ng-click="selector.list()">
+    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+  </a>
+
+  <div class="list hidden">
+    <div class="input-group option filter-box">
+      <input type="text" class="form-control" ng-model="selector.filter">
+      <div class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+      </div>
+    </div>
+    <div ng-repeat="option in selector.data" class="option option-{{option.id}}" value="{{option.id}}" parent="{{selector.uid}}" ng-click="selector.selection(option)" >
+      {{option.name}}
+    </div>
+  </div>
+  <input type="hidden" ng-model="selector.model" value="{{selector.model.id}}" id="input-{{selector.uid}}" class="select-input">
+</div>

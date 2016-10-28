@@ -1,0 +1,22 @@
+
+cx-select {
+    .form-control {
+        padding: 2px;
+        height: 24px;
+        margin-bottom: 0px !important;
+    }
+    .input-group-addon {
+        cursor: pointer;
+        padding: 5px;
+    }
+    .filter-box {
+      position: absolute;
+      top: 26px;
+      left: 0px;
+      z-index: 999;
+      .form-control {
+        // @include calc("width","100% - 22px");
+        width: 100% !important;
+      }
+    }
+}
