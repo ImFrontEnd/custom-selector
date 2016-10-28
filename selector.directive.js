@@ -2,16 +2,16 @@
 	'use strict';
 	angular
 		.module('contralormx')
-		.directive('cxSelect', ['$rootScope', 'Connection', 'Contralor', Directive]);
+		.directive('Selector', ['$rootScope', 'Connection', 'Contralor', Directive]);
 
 	function Directive() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'app/components/selector/selector.html',
+			templateUrl: '/selector.html',
 			controller: Controller,
 			controllerAs: 'selector',
 			scope: {
-				nid: '@?',
+				uid: '@?',
 				nclass: '@?',
 				source: '@?',
 				parent: '=?',
