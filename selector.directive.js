@@ -33,26 +33,10 @@
 			if (vm.source) {
 				var company_id = Utils.storage('company_id');
 				vm.data = [];
-				if (vm.source === 'compañia-cuentas-contables') {
-					var promise = Connection.get(Utils.api.url[vm.source] + company_id);
-					promise.then(function (response) {
-						var temp = [];
-						angular.forEach(response, function (value) {
-							var element = {
-								id: value.id,
-								name: value.code + ' ' + value.name
-							};
-							temp.push(element);
-						});
-						angular.extend(vm.data, temp);
-						Utils.storage(vm.source, temp);
-					});
-				} else {
-					var waiting = Connection.get(Utils.api.url[vm.source]);
+				var waiting = Connection.get(Utils.api.url[vm.source]);
 					waiting.then(function (response) {
 						angular.extend(vm.data, response);
 					});
-				}
 				var service = Connection.get(Utils.api.url[vm.source]);
 				service.then(function (response) {
 					angular.extend(vm.data, response);
