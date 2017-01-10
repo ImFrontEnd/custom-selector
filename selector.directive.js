@@ -1,8 +1,8 @@
 (function () {
 	'use strict';
 	angular
-		.module('contralormx')
-		.directive('Selector', ['$rootScope', 'Connection', 'Contralor', Directive]);
+		.module('myApp')
+		.directive('Selector', ['$rootScope', 'Connection', 'Utils', Directive]);
 
 	function Directive() {
 		var directive = {
@@ -22,7 +22,7 @@
 		};
 		return directive;
 
-		function Controller($scope, $rootScope, Connection, Contralor) {
+		function Controller($scope, $rootScope, Connection, Utils) {
 			var vm = $scope;
 			vm.filter = '';
 			vm.list = list;
@@ -31,10 +31,10 @@
 				vm.uid = 'select-' + vm.$id;
 			}
 			if (vm.source) {
-				var company_id = Contralor.storage('company_id');
+				var company_id = Utils.storage('company_id');
 				vm.data = [];
 				if (vm.source === 'compañia-cuentas-contables') {
-					var promise = Connection.get(Contralor.api.url[vm.source] + company_id);
+					var promise = Connection.get(Utils.api.url[vm.source] + company_id);
 					promise.then(function (response) {
 						var temp = [];
 						angular.forEach(response, function (value) {
@@ -45,15 +45,15 @@
 							temp.push(element);
 						});
 						angular.extend(vm.data, temp);
-						Contralor.storage(vm.source, temp);
+						Utils.storage(vm.source, temp);
 					});
 				} else {
-					var waiting = Connection.get(Contralor.api.url[vm.source]);
+					var waiting = Connection.get(Utils.api.url[vm.source]);
 					waiting.then(function (response) {
 						angular.extend(vm.data, response);
 					});
 				}
-				var service = Connection.get(Contralor.api.url[vm.source]);
+				var service = Connection.get(Utils.api.url[vm.source]);
 				service.then(function (response) {
 					angular.extend(vm.data, response);
 				});
