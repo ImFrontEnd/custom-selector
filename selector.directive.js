@@ -33,10 +33,6 @@
 			if (vm.source) {
 				var company_id = Utils.storage('company_id');
 				vm.data = [];
-				var waiting = Connection.get(Utils.api.url[vm.source]);
-					waiting.then(function (response) {
-						angular.extend(vm.data, response);
-					});
 				var service = Connection.get(Utils.api.url[vm.source]);
 				service.then(function (response) {
 					angular.extend(vm.data, response);
