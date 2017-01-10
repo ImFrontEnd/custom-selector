@@ -60,12 +60,10 @@
 
 			function toogleList(e) {
 				var $parent = angular.element(e.currentTarget).parents('.select'),
-            $list = $parent.children('.list'),
-            $doc = angular.element(document);
-				
-        $list.toggleClass('hidden');
-				
-        if ($list.is('.hidden')) {
+					$list = $parent.children('.list'),
+					$doc = angular.element(document);
+				$list.toggleClass('hidden');
+				if ($list.is('.hidden')) {
 					$doc.off('click');
 				} else {
 					$doc.click(function () {
@@ -73,7 +71,6 @@
 						$doc.off('click');
 					});
 				}
-        
 			}
 		}
 	}
